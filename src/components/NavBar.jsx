@@ -1,26 +1,31 @@
 import { Link } from "@tanstack/react-router";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarCollapse,
+  NavbarLink,
+  NavbarToggle,
+} from "flowbite-react";
 
 export const NavBar = () => {
   return (
-    <header>
-      <nav className="navbar">
-        <div className="navbar__logo">
-          <Link to="/">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
-              alt="Pokemon Logo"
-            />
-          </Link>
-        </div>
-        <ul className="navbar__links">
-          <li>
-            <Link to="/pokemon">Pokemon</Link>
-          </li>
-          <li>
-            <Link to="/game">Games</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <Navbar fluid rounded>
+      <NavbarBrand as={Link} href="/">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
+          className="h-10 lg:h-16"
+          alt="Pokemon Logo"
+        />
+      </NavbarBrand>
+      <NavbarToggle />
+      <NavbarCollapse>
+        <NavbarLink as={Link} href="/pokemon">
+          Pokemon
+        </NavbarLink>
+        <NavbarLink as={Link} href="/games">
+          Games
+        </NavbarLink>
+      </NavbarCollapse>
+    </Navbar>
   );
 };

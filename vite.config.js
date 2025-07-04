@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { configDefaults } from "vitest/config";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
+import flowbiteReact from "flowbite-react/plugin/vite";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,6 +20,7 @@ export default defineConfig({
     }),
     react(),
     tailwindcss(),
+    flowbiteReact()
   ],
   resolve: {
     alias: { "@": resolve(__dirname, "./src") },

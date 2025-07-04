@@ -3,6 +3,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getPokemonCarousel } from "../services/pokemon";
 import { CarosuelCard } from "./CarouselCard";
+import { Carousel } from "flowbite-react";
 
 export const Carosuel = () => {
   const { data } = useSuspenseQuery({
@@ -13,11 +14,11 @@ export const Carosuel = () => {
   return (
     <ErrorBoundary fallback={<div>Error</div>}>
       <Suspense fallback={<div>Loading...</div>}>
-        <div>
+        <Carousel>
           {data.map((pokemon) => (
             <CarosuelCard key={pokemon.id} pokemon={pokemon} />
           ))}
-        </div>
+        </Carousel>
       </Suspense>
     </ErrorBoundary>
   );
