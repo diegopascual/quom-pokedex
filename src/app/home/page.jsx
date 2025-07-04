@@ -13,8 +13,8 @@ const Home = () => {
   return (
     <>
       <Carosuel />
-      <section>
-        <h3>Pokemon Essentials</h3>
+      <section className="my-16">
+        <h3 className="text-4xl text-center">Pokemon Essentials</h3>
         <List pokemon={pokemon} />
       </section>
       <section>

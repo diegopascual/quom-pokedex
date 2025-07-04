@@ -4,7 +4,7 @@ import { TYPES_COLORS } from "../constants/types-colors";
 
 export const CarosuelCard = ({ pokemon }) => (
   <article
-    className={`${TYPES_COLORS[pokemon.type]} flex flex-col items-center justify-between p-4 lg:flex-row lg:max-h-100 lg:justify-evenly`}
+    className={`${TYPES_COLORS[pokemon.type]} flex flex-col items-center justify-between p-4 pb-13 lg:flex-row lg:max-h-100 lg:justify-evenly`}
   >
     <div className="w-full lg:w-auto">
       <img src={pokemon.image_url} alt={pokemon.name} className="w-2xs" />
