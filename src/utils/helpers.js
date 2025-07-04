@@ -3,5 +3,5 @@ export const capitalize = (string) => {
     throw new TypeError("Expected a string");
   }
 
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.slice(1).replace(/-/g, " ");
 };

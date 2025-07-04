@@ -1,7 +1,13 @@
-import { getPokemon, getPokemonSpecie } from "../api/pokemon";
+import { getPokemon as getPokemonApi, getPokemonSpecie } from "../api/pokemon";
 import { getPokemonDetails } from "../utils/helpers";
 
-// const getPokemonDetails = async (pokemon) => {};
+export const getPokemon = async ({ id, name }) => {
+  const pokemon = await getPokemonApi({ id, name });
+  const pokemonSpecie = await getPokemonSpecie(pokemon.species);
+
+  const pokemonDetails = getPokemonDetails(pokemon, pokemonSpecie);
+  return pokemonDetails;
+};
 
 export const getPokemonCarousel = async () => {
   const POKEMON_CAROUSEL_IDS = {
@@ -17,21 +23,5 @@ export const getPokemonCarousel = async () => {
   const pokemonPromises = pokemonIds.map((id) => getPokemon({ id }));
   const pokemonResults = await Promise.all(pokemonPromises);
 
-  // Fetch Pokémon specie for each Pokémon
-  const pokemonSpeciePromises = pokemonResults.map((pokemon) =>
-    getPokemonSpecie({ id: pokemon.id })
-  );
-  const pokemonSpecieResults = await Promise.all(pokemonSpeciePromises);
-
-  const data = pokemonIds.map((id) => {
-    const pokemon = pokemonResults.find((p) => p.id === id);
-    const pokemonSpecie = pokemonSpecieResults.find(
-      (p) => p.name === pokemon.name
-    );
-
-    const pokemonDetails = getPokemonDetails(pokemon, pokemonSpecie);
-    return pokemonDetails;
-  });
-
-  return data;
+  return pokemonResults;
 };
