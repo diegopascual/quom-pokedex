@@ -1,7 +1,6 @@
 import usePokemon from "@/features/pokemon/hooks/usePokemon";
 import useScreenSize from "@/hooks/useScreenSize";
-import { Carosuel } from "@/features/pokemon/components/Carousel";
-import { List } from "@/features/pokemon/components/List";
+import { Carosuel, List } from "@/features/pokemon/components";
 
 const MOBILE_LIMIT = 3;
 const DESKTOP_LIMIT = 10;
@@ -14,9 +13,13 @@ const Home = () => {
   return (
     <>
       <Carosuel />
-      <h3>Pokemon Essentials</h3>
-      <List pokemon={pokemon}/>
-      <h3>Games Essentials</h3>
+      <section>
+        <h3>Pokemon Essentials</h3>
+        <List pokemon={pokemon} />
+      </section>
+      <section>
+        <h3>Games Essentials</h3>
+      </section>
     </>
   );
 };

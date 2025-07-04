@@ -19,7 +19,6 @@ export const getPokemonCarousel = async () => {
     CHARMANDER: 4,
     SQUIRTLE: 7,
     PIKACHU: 25,
-    CYNDQUIL: 155,
     UMBREON: 197,
   };
 
