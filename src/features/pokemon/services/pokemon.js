@@ -1,4 +1,8 @@
-import { getPokemon as getPokemonApi, getPokemonSpecie } from "../api/pokemon";
+import {
+  getPokemon as getPokemonApi,
+  getPokemonList as getPokemonListApi,
+  getPokemonSpecie,
+} from "../api/pokemon";
 import { getPokemonDetails } from "../utils/helpers";
 
 export const getPokemon = async ({ id, name }) => {
@@ -22,6 +26,14 @@ export const getPokemonCarousel = async () => {
   // Fetch Pokémon details for each ID in the carousel
   const pokemonIds = Object.values(POKEMON_CAROUSEL_IDS);
   const pokemonPromises = pokemonIds.map((id) => getPokemon({ id }));
+  const pokemonResults = await Promise.all(pokemonPromises);
+
+  return pokemonResults;
+};
+
+export const getPokemonList = async ({ limit, offset }) => {
+  const pokemon = await getPokemonListApi({ limit, offset });
+  const pokemonPromises = pokemon.results.map((p) => getPokemon(p));
   const pokemonResults = await Promise.all(pokemonPromises);
 
   return pokemonResults;

@@ -18,8 +18,8 @@ export const getPokemonDetails = (pokemon, pokemonSpecie) => {
   return {
     id,
     name: capitalize(name),
-    description,
     type,
+    description,
     image_url,
   };
 };

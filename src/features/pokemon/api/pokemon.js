@@ -1,6 +1,6 @@
 import axios from "@/api/config";
 
-export const getPokemonList = async (limit = 20, offset = 0) => {
+export const getPokemonList = async ({ limit, offset }) => {
   const response = await axios.get("/pokemon", {
     params: {
       limit,

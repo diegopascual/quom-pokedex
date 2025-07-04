@@ -14,10 +14,10 @@ export const NavBar = () => {
         </div>
         <ul className="navbar__links">
           <li>
-            <Link to="/pokemons">Pokemons</Link>
+            <Link to="/pokemon">Pokemon</Link>
           </li>
           <li>
-            <Link to="/games">Games</Link>
+            <Link to="/game">Games</Link>
           </li>
         </ul>
       </nav>
