@@ -16,6 +16,7 @@ export const getPokemonCarousel = async () => {
     SQUIRTLE: 7,
     PIKACHU: 25,
     CYNDQUIL: 155,
+    UMBREON: 197,
   };
 
   // Fetch Pokémon details for each ID in the carousel

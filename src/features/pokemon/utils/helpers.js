@@ -1,11 +1,10 @@
 import { capitalize } from "@/utils/helpers";
 
 export const getPokemonDetails = (pokemon, pokemonSpecie) => {
-  const { id, name, sprites } = pokemon;
+  const { id, name, sprites, types } = pokemon;
 
-  // Get the image URLs from the sprites
+  // Get the image URL from the sprites
   const image_url = sprites["other"]["official-artwork"]["front_default"];
-  const bgRef_url = sprites["other"]["official-artwork"]["front_shiny"];
 
   // Get the English description from the species data
   const { flavor_text_entries } = pokemonSpecie;
@@ -14,5 +13,13 @@ export const getPokemonDetails = (pokemon, pokemonSpecie) => {
     .flavor_text.replace(/\f/g, " ")
     .replace(/\n/g, " ");
 
-  return { id, name: capitalize(name), description, image_url, bgRef_url };
+  const type = types[0].type.name;
+
+  return {
+    id,
+    name: capitalize(name),
+    description,
+    type,
+    image_url,
+  };
 };
