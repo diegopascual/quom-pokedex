@@ -4,6 +4,7 @@ import {
   getPokemonSpecie,
 } from "../api/pokemon";
 import { getPokemonDetails } from "../utils/helpers";
+import { capitalize } from "@/utils/helpers";
 
 export const getPokemon = async ({ id, name }) => {
   const pokemon = await getPokemonApi({ id, name });
@@ -36,4 +37,14 @@ export const getPokemonList = async ({ limit, offset }) => {
   const pokemonResults = await Promise.all(pokemonPromises);
 
   return pokemonResults;
+};
+
+export const getAllPokemonNames = async () => {
+  const pokemon = await getPokemonListApi({ limit: 2000, offset: 0 });
+  const pokemonNames = pokemon.results.map((p) => ({
+    id: Number(p.url.split("/").slice(-2, -1)[0]),
+    name: capitalize(p.name),
+  }));
+
+  return pokemonNames;
 };
