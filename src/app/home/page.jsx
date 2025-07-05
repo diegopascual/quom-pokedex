@@ -32,9 +32,6 @@ const Home = () => {
           </Link>
         </AsyncWrapper>
       </section>
-      <section>
-        <h3>Games Essentials</h3>
-      </section>
     </>
   );
 };

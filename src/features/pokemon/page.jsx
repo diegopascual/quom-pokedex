@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import usePokemon from "@/features/pokemon/hooks/usePokemon";
+import usePokemon from "./hooks/usePokemon";
+import useSinglePokemon from "./hooks/useSinglePokemon";
 import useScreenSize from "@/hooks/useScreenSize";
 import { getAllPokemonNames } from "./services/pokemon";
 import { List, SearchBar } from "@/features/pokemon/components";
-import { Pagination } from "flowbite-react";
+import { Pagination, Spinner } from "flowbite-react";
 import { AsyncWrapper } from "@/components";
 
 const MOBILE_LIMIT = 5;
@@ -18,6 +19,13 @@ const Pokemon = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const { data: pokemon } = usePokemon({ page, limit });
+
+  const {
+    data: singlePokemon,
+    isPending,
+    isError,
+  } = useSinglePokemon({ searchTerm });
+
   const { data: pokemonNames } = useSuspenseQuery({
     queryKey: ["pokemonNames"],
     queryFn: getAllPokemonNames,
@@ -27,25 +35,55 @@ const Pokemon = () => {
   const onPageChange = (page) => setPage(page);
   const handleSearch = (term) => {
     setSearchTerm(term);
-    // setPage(1); // Reset to first page when searching
   };
+
+  const isSearching = searchTerm && searchTerm.trim().length > 0 && isPending;
 
   return (
     <AsyncWrapper
       fallback={<div>Loading...</div>}
       errorFallback={<div>Error</div>}
     >
-      <div className="my-6">
-        <SearchBar onSearch={handleSearch} placeholder="Search" />
-      </div>
-      <List pokemon={pokemon} />
-      <div className="flex overflow-x-auto sm:justify-center">
-        <Pagination
-          currentPage={page}
-          totalPages={totalPages}
-          onPageChange={onPageChange}
-          showIcons
-        />
+      <div className="my-12">
+        <SearchBar onSearch={handleSearch} />
+
+        {isSearching && (
+          <div className="flex justify-center items-center">
+            <div className="text-center">
+              <Spinner
+                color="info"
+                size="xl"
+                aria-label="Searching pokemon..."
+              />
+              <p className="mt-4 text-primary">Searching pokemon...</p>
+            </div>
+          </div>
+        )}
+
+        {isError && (
+          <div className="flex justify-center items-center">
+            <div className="text-center">
+              <p className="text-red-500 text-lg font-semibold">
+                Pokemon not found
+              </p>
+            </div>
+          </div>
+        )}
+
+        {!isSearching && (
+          <List pokemon={singlePokemon ? [singlePokemon] : pokemon} />
+        )}
+
+        {!singlePokemon && !isSearching && (
+          <div className="flex overflow-x-auto sm:justify-center">
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              onPageChange={onPageChange}
+              showIcons
+            />
+          </div>
+        )}
       </div>
     </AsyncWrapper>
   );

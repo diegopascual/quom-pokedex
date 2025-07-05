@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TextInput, Button } from "flowbite-react";
 import { Search, X } from "lucide-react";
 
-export const SearchBar = ({ onSearch, placeholder = "Search Pokemon..." }) => {
+export const SearchBar = ({ onSearch, placeholder = "Search ..." }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSubmit = (e) => {
