@@ -1,6 +1,6 @@
 import { Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { FavoritesProvider } from "@/features/pokemon/context/FavoritesProvider";
+import { FavoritesProvider } from "@/features/pokemon/favorites/context/FavoritesProvider";
 import { NavBar } from "@/components";
 
 function App() {

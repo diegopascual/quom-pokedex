@@ -3,7 +3,7 @@ import { Card as CardFlowbite, Button } from "flowbite-react";
 import { Heart } from "lucide-react";
 import { formatNumberToFourDigits } from "@/utils/helpers";
 import { TYPES_COLORS } from "../constants/types-colors";
-import { useFavorites } from "../context/FavoritesContext";
+import { useFavorites } from "../favorites/context/FavoritesContext";
 
 export const Card = ({ pokemon }) => {
   const { isFavorite, toggleFavorite } = useFavorites();

@@ -25,6 +25,9 @@ export const NavBar = () => {
         <NavbarLink as={Link} href="/games">
           Games
         </NavbarLink>
+        <NavbarLink as={Link} href="/favorites">
+          Favorites
+        </NavbarLink>
       </NavbarCollapse>
     </Navbar>
   );

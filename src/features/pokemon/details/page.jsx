@@ -1,14 +1,14 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useParams, Link } from "@tanstack/react-router";
 import { getPokemon } from "@/features/pokemon/services/pokemon";
-import { useFavorites } from "../context/FavoritesContext";
+import { useFavorites } from "../favorites/context/FavoritesContext";
 import { AsyncWrapper } from "@/components";
 import { formatNumberToFourDigits } from "@/utils/helpers";
 import { TYPES_COLORS } from "@/features/pokemon/constants/types-colors";
 import { Card, Button } from "flowbite-react";
 import { Heart, ArrowLeft } from "lucide-react";
 
-export const Details = () => {
+const Details = () => {
   const { id } = useParams({ from: "/pokemon/$id" });
   const { isFavorite, toggleFavorite } = useFavorites();
 
@@ -100,3 +100,5 @@ export const Details = () => {
     </AsyncWrapper>
   );
 };
+
+export default Details;
