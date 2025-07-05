@@ -78,7 +78,7 @@ const Details = () => {
 
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Tipo</h3>
+                  <h3 className="text-lg font-semibold mb-2">Type</h3>
                   <span
                     className={`${TYPES_COLORS[pokemon.type]} px-3 py-1 rounded-full text-sm font-medium`}
                   >
@@ -87,7 +87,7 @@ const Details = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Descripción</h3>
+                  <h3 className="text-lg font-semibold mb-2">Description</h3>
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     {pokemon.description}
                   </p>

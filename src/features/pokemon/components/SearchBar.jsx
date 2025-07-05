@@ -39,7 +39,7 @@ export const SearchBar = ({ onSearch, placeholder = "Search Pokemon..." }) => {
         )}
       </div>
       <Button type="submit" disabled={!searchTerm.trim()}>
-        Buscar
+        Search
       </Button>
     </form>
   );

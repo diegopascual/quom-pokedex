@@ -1,5 +1,8 @@
 import usePokemon from "@/features/pokemon/hooks/usePokemon";
 import useScreenSize from "@/hooks/useScreenSize";
+import { Link } from "@tanstack/react-router";
+import { Button } from "flowbite-react";
+import { Plus } from "lucide-react";
 import { Carosuel, List } from "@/features/pokemon/components";
 import { AsyncWrapper } from "@/components";
 
@@ -21,6 +24,12 @@ const Home = () => {
           errorFallback={<div>Error</div>}
         >
           <List pokemon={pokemon} />
+          <Link to="/pokemon">
+            <Button color="alternative">
+              <Plus className="w-4 h-4 mr-2" />
+              More
+            </Button>
+          </Link>
         </AsyncWrapper>
       </section>
       <section>
